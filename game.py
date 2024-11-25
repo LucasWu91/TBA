@@ -42,15 +42,22 @@ class Game:
         self.rooms.append(swamp)
         castle = Room("Castle", "dans un énorme château fort avec des douves et un pont levis. Sur les tours, des flèches en or massif.")
         self.rooms.append(castle)
+        village = Room("Village", "dans un village de singes perché dans les arbres, avec des ponts suspendus.")
+        self.rooms.append(village)
+        temple = Room("Temple", "dans un ancien temple mystique entouré de statues imposantes.")
+        self.rooms.append(temple)
 
         # Create exits for rooms
 
-        forest.exits = {"N" : cave, "E" : None, "S" : castle, "O" : None}
-        tower.exits = {"N" : cottage, "E" : None, "S" : None, "O" : None}
+        forest.exits = {"N" : cave, "E" : None, "S" : castle, "O" : village}
+        tower.exits = {"N" : cottage, "E" : temple, "S" : None, "O" : None}
         cave.exits = {"N" : None, "E" : cottage, "S" : forest, "O" : None}
         cottage.exits = {"N" : None, "E" : None, "S" : tower, "O" : cave}
         swamp.exits = {"N" : tower, "E" : None, "S" : None, "O" : castle}
         castle.exits = {"N" : forest, "E" : swamp, "S" : None, "O" : None}
+        village.exits = {"N" : None, "E" : None, "S" : None, "O" : forest}
+        temple.exits = {"N" : None, "E" : None, "S" : None, "O" : tower}
+
 
         # Setup player and starting room
 
