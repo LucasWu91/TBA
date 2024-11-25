@@ -42,7 +42,7 @@ class Game:
         self.rooms.append(swamp)
         castle = Room("Castle", "dans un énorme château fort avec des douves et un pont levis. Sur les tours, des flèches en or massif.")
         self.rooms.append(castle)
-        village = Room("Village", "dans un village de singes perché dans les arbres, avec des ponts suspendus.")
+        village = Room("Village", "dans un village de singes perchés dans les arbres, avec des ponts suspendus.")
         self.rooms.append(village)
         temple = Room("Temple", "dans un ancien temple mystique entouré de statues imposantes.")
         self.rooms.append(temple)
