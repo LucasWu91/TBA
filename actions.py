@@ -65,7 +65,7 @@ class Actions:
             direction = "S"
         if direction in ['e', "Est", "est", "EST"]:
             direction = "E"
-        if direction in ['u', 'Up', "UP"]:
+        if direction in ['u','up', 'Up', "UP"]:
             direction = 'U'
         if direction in ['d', "Down", "down", "DOWN"]:
             direction = "D"
