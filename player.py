@@ -25,5 +25,5 @@ class Player():
         return True
     def get_history(self) :
         print("\nVous avez déjà visité les pièces suivantes :")
-        print(self.history)
-    
+        for i in range(len(self.history)) :
+            print('  - ' + self.history[i])
