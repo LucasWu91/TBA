@@ -64,7 +64,7 @@ class Game:
         castle.exits = {"N" : forest, "E" : swamp, "S" : None, "O" : None}
         village.exits = {"N" : None, "E" : None, "S" : None, "O" : forest}
         temple.exits = {"N" : None, "E" : None, "S" : None, "O" : tower, "U": temple_upper, "D": temple_basement}
-
+        temple_upper.exits ={"N" : None, "E" : None, "S" : None, "O" : None, "U": None, "D": temple}
 
         # Setup player and starting room
 
