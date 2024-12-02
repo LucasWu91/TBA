@@ -55,7 +55,7 @@ class Actions:
 
         # Get the direction from the list of words.
         direction = list_of_words[1]
-        valid_directions = ["N", "E", "S", "O"]
+        valid_directions = ["N", "E", "S", "O", "U", "D"]
         if direction not in valid_directions:
             print(f"\nDirection '{direction}' non reconnue.\n")
             return False
