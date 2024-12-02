@@ -47,6 +47,13 @@ class Game:
         temple = Room("Temple", "dans un ancien temple mystique entouré de statues imposantes.")
         self.rooms.append(temple)
 
+
+        # Ajout des nouvelles salles
+        temple_upper = Room("Temple Upper", "au premier étage du temple, où la lumière traverse de magnifiques vitraux.")
+        self.rooms.append(temple_upper)
+        temple_basement = Room("Temple Basement", "dans le sous-sol du temple, entouré de murs froids et humides.")
+        self.rooms.append(temple_basement)  
+        
         # Create exits for rooms
 
         forest.exits = {"N" : cave, "E" : None, "S" : castle, "O" : village}
@@ -56,7 +63,7 @@ class Game:
         swamp.exits = {"N" : tower, "E" : None, "S" : None, "O" : castle}
         castle.exits = {"N" : forest, "E" : swamp, "S" : None, "O" : None}
         village.exits = {"N" : None, "E" : None, "S" : None, "O" : forest}
-        temple.exits = {"N" : None, "E" : None, "S" : None, "O" : tower}
+        temple.exits = {"N" : None, "E" : None, "S" : None, "O" : tower, "U": temple_upper, "D": temple_basement}
 
 
         # Setup player and starting room
