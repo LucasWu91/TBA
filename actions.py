@@ -58,7 +58,7 @@ class Actions:
         valid_directions = ["N", "E", "S", "O", "U", "D"]
         if direction not in valid_directions:
             print(f"\nDirection '{direction}' non reconnue.\n")
-            print(f"\nVous êtes {self.description}\n\n{self.get_exit_string()}\n")
+            print(f"\nVous êtes {Room.description}\n\n{Room.get_exit_string()}\n")
             return False
         # Move the player in the direction specified by the parameter.
         player.move(direction)
