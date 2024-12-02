@@ -66,7 +66,7 @@ class Game:
         temple.exits = {"N" : None, "E" : None, "S" : None, "O" : tower, "U": temple_upper, "D": temple_basement}
 
         temple_upper.exits ={"N" : None, "E" : None, "S" : None, "O" : None, "U": None, "D": temple}
-        temple_basement = {"N" : None, "E" : None, "S" : None, "O" : None, "U": temple, "D": None }
+        temple_basement.exits = {"N" : None, "E" : None, "S" : None, "O" : None, "U": temple, "D": None }
         # Setup player and starting room
 
         self.player = Player(input("\nEntrez votre nom: "))

@@ -55,7 +55,20 @@ class Actions:
 
         # Get the direction from the list of words.
         direction = list_of_words[1]
+
         valid_directions = ["N", "E", "S", "O", "U", "D"]
+        if direction in ['n', 'Nord', 'nord', 'NORD' ] :
+            direction = "N"
+        if direction in ['o', "Ouest", "ouest", "OUEST"]:
+            direction = "O"
+        if direction in ['s', "Sud", "sud", "SUD"]:
+            direction = "S"
+        if direction in ['e', "Est", "est", "EST"]:
+            direction = "E"
+        if direction in ['u', 'Up', "UP"]:
+            direction = 'U'
+        if direction in ['d', "Down", "down", "DOWN"]:
+            direction = "D"
         if direction not in valid_directions:
             print(f"\nDirection '{direction}' non reconnue.\n")
             print(game.player.current_room.get_long_description())
