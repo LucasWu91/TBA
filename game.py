@@ -64,7 +64,7 @@ class Game:
         castle.exits = {"N" : forest, "E" : swamp, "S" : None, "O" : None}
         village.exits = {"N" : None, "E" : None, "S" : None, "O" : forest}
         temple.exits = {"N" : None, "E" : None, "S" : None, "O" : tower, "U": temple_upper, "D": temple_basement}
-        
+
         temple_upper.exits ={"N" : None, "E" : None, "S" : None, "O" : None, "U": None, "D": temple}
         temple_basement = {"N" : None, "E" : None, "S" : None, "O" : None, "U": temple, "D": None }
         # Setup player and starting room
@@ -78,8 +78,9 @@ class Game:
         self.print_welcome()
         # Loop until the game is finished
         while not self.finished:
-            # Get the command from the player
+            # Get the command from the player and show the history after each command
             self.process_command(input("> "))
+
         return None
 
     # Process the command entered by the player
