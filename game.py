@@ -80,7 +80,6 @@ class Game:
         while not self.finished:
             # Get the command from the player and show the history after each command
             self.process_command(input("> "))
-
         return None
 
     # Process the command entered by the player
