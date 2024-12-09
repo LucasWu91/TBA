@@ -76,6 +76,7 @@ class Actions:
         # Move the player in the direction specified by the parameter.
         player.move(direction)
         player.get_history()
+        actions.back()
         return True
 
     def quit(game, list_of_words, number_of_parameters):
@@ -156,3 +157,6 @@ class Actions:
             print("\t- " + str(command))
         print()
         return True
+    def back(game, list_of_words, number_of_parameters) :
+        pop(player.history[-1])
+        
