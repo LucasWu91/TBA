@@ -27,7 +27,8 @@ class Game:
         self.commands["quit"] = quit
         go = Command("go", " <direction> : se déplacer dans une direction cardinale (N, E, S, O)", Actions.go, 1)
         self.commands["go"] = go
-        
+        back=Command("back", "<direction> : retour à la dernière position", Actions.back,0 )
+        self.commands["back"] = back
         # Setup rooms
 
         forest = Room("Forest", "dans une forêt enchantée. Vous entendez une brise légère à travers la cime des arbres.")

@@ -76,7 +76,6 @@ class Actions:
         # Move the player in the direction specified by the parameter.
         player.move(direction)
         player.get_history()
-        actions.back()
         return True
 
     def quit(game, list_of_words, number_of_parameters):
@@ -158,5 +157,41 @@ class Actions:
         print()
         return True
     def back(game, list_of_words, number_of_parameters) :
-        pop(player.history[-1])
+
+        l = len(list_of_words)
+        player = game.player
+        # If the number of parameters is incorrect, print an error message and return False.
+
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG1.format(command_word=command_word))
+            return False
         
+        if player.history==[]  :
+            print("\n Vous ne pouvez pas revenir en arrière ! \n")
+            return False
+        
+        player.current_room=player.history[-1]
+        player.history.pop()
+        print(player.current_room.get_long_description())
+        return True
+    
+    def inventaire(game, list_of_words, number_of_parameters) :
+        l = len(list_of_words)
+        player = game.player
+        # If the number of parameters is incorrect, print an error message and return False.
+
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG1.format(command_word=command_word))
+            return False
+        
+        if player.inventary=={}:
+            print("\n Votre inventaire est vide !\n")
+            return False
+        print("\n Voici votre inventaire:")
+        for obj in player.inventary_name:
+                print("\n - " + str(obj))
+        print()
+        return True
+    
