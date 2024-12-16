@@ -174,6 +174,7 @@ class Actions:
         player.current_room=player.history[-1]
         player.history.pop()
         print(player.current_room.get_long_description())
+        player.get_history()
         return True
     
     def inventaire(game, list_of_words, number_of_parameters) :

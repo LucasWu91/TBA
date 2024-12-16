@@ -6,6 +6,7 @@ from room import Room
 from player import Player
 from command import Command
 from actions import Actions
+from item import Item
 
 class Game:
 
@@ -29,6 +30,7 @@ class Game:
         self.commands["go"] = go
         back=Command("back", "<direction> : retour à la dernière position", Actions.back,0 )
         self.commands["back"] = back
+
         # Setup rooms
 
         forest = Room("Forest", "dans une forêt enchantée. Vous entendez une brise légère à travers la cime des arbres.")
@@ -54,7 +56,13 @@ class Game:
         self.rooms.append(temple_upper)
         temple_basement = Room("Temple Basement", "dans le sous-sol du temple, entouré de murs froids et humides.")
         self.rooms.append(temple_basement)  
+
+
+        #Objets
+
+        clee=Item("cle", "une clé pour ouvrir une salle", 0.3)  
         
+
         # Create exits for rooms
 
         forest.exits = {"N" : cave, "E" : None, "S" : castle, "O" : village}
