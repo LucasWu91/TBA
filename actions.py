@@ -191,8 +191,8 @@ class Actions:
             print("\n Votre inventaire est vide !\n")
             return False
         print("\n Voici votre inventaire:")
-        for obj in player.inventary_name:
-                print("\n - " + str(obj))
+        for obj in player.inventary.values():
+                print(obj)
         print()
         return True
     
@@ -213,3 +213,28 @@ class Actions:
             for item, description in game.player.current_room.inventary.items():
                 print(f" - {item} : {description}")
 
+    def take(game, list_of_words, number_of_parameters) :
+        l = len(list_of_words)
+        player = game.player
+        # If the number of parameters is incorrect, print an error message and return False.
+
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG1.format(command_word=command_word))
+            return False
+        
+        if game.player.current_room.inventary == {} :
+            print("\n il n'y a rien ici")
+            return False
+        
+        item=list_of_words[1]
+        if item not in game.player.current_room.inventary.keys() :
+            print("\n Cette objet n'est pas dans cette pièce!\n")
+            return False
+        objet=game.item[item]
+        player.inventary[f'{item}']=objet
+        print(f"\n Vous avez ramassé, {objet.name}!\n")
+
+        game.player.current_room.inventary.pop(f"{item}")
+
+        return True

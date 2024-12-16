@@ -30,12 +30,3 @@ class Player():
         for i in range(len(self.history)) :
             print('  - ' + self.history[i].description)
     
-
-    
-    def get_inventary(self,game,item):
-        objet=game.items[item]
-        self.inventary_name.append(objet.name)
-        self.inventary[f'{item}']=objet
-        print(f"\n Vous avez ramasseé, {objet.name} !\n")
-
-        return True
