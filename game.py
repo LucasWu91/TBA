@@ -37,6 +37,8 @@ class Game:
         self.commands["look"] = look
         take=Command('take', "<direction> : Prend un objet", Actions.take,1 )
         self.commands["take"] = take
+        drop=Command('drop', "<direction> : Dépose un objet", Actions.drop,1 )
+        self.commands["drop"] = drop
 
         # Setup rooms
 

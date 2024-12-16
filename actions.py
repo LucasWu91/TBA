@@ -190,7 +190,7 @@ class Actions:
         if player.inventary=={}:
             print("\n Votre inventaire est vide !\n")
             return False
-        print("\n Voici votre inventaire:")
+        print("\n Vous disposez des items suivants:")
         for obj in player.inventary.values():
                 print(obj)
         print()
@@ -233,8 +233,36 @@ class Actions:
             return False
         objet=game.item[item]
         player.inventary[f'{item}']=objet
-        print(f"\n Vous avez ramassé, {objet.name}!\n")
 
         game.player.current_room.inventary.pop(f"{item}")
+
+        return True
+    
+
+    def drop(game, list_of_words, number_of_parameters) :
+        l = len(list_of_words)
+        player = game.player
+        # If the number of parameters is incorrect, print an error message and return False.
+
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG1.format(command_word=command_word))
+            return False
+        
+    
+        if player.inventary=={}:
+            print("\n il n'y a rien dans votre inventaire")
+            return False
+        
+        item=list_of_words[1]
+        if item not in player.inventary.keys():
+            print(f"L'objet '{item}' n'est pas dans votre inventaire.")
+            return False
+        
+        objet=game.item[item]
+
+        game.player.current_room.inventary[f'{item}']=objet
+        player.inventary.pop(f"{item}")
+
 
         return True
