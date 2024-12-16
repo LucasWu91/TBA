@@ -16,6 +16,7 @@ class Game:
         self.rooms = []
         self.commands = {}
         self.player = None
+        self.item={}
     
     # Setup the game
     def setup(self):
@@ -30,6 +31,11 @@ class Game:
         self.commands["go"] = go
         back=Command("back", "<direction> : retour à la dernière position", Actions.back,0 )
         self.commands["back"] = back
+        inventaire=Command("inventaire", "<direction> : affiche l'inventaire", Actions.inventaire,0 )
+        self.commands["inventaire"] = inventaire
+        look=Command('look', "<direction> : affiche les objets de la salle", Actions.look,0 )
+        self.commands["look"] = look
+        
 
         # Setup rooms
 
@@ -60,7 +66,13 @@ class Game:
 
         #Objets
 
-        clee=Item("cle", "une clé pour ouvrir une salle", 0.3)  
+        cle=Item("cle", "une clé pour ouvrir une salle", 0.3)  
+        self.item['cle']=cle
+
+
+        #Objets dans les lieux
+
+        temple.inventary={'cle':cle}
         
 
         # Create exits for rooms
