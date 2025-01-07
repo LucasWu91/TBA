@@ -20,3 +20,11 @@ class Character :
 
             return True
         return False
+        
+    def get_msg(self):
+        if self.msgs:  # Si la liste des messages n'est pas vide
+            msg = self.msgs.pop(0)  # Retire le premier message
+            self.msgs.append(msg)  # Le remet à la fin de la liste pour le cycler
+            return msg
+        else:
+            return "Ce personnage n'a rien à dire pour le moment."

@@ -206,12 +206,14 @@ class Actions:
             print(MSG1.format(command_word=command_word))
             return False
         
-        if not game.player.current_room.get_inventary() :
+        if not game.player.current_room.get_inventary() and not game.player.current_room.character.items() :
             print ("On ne voit rien ici.")
         else :    
             print("La pièce contient :")
-            for item, description in game.player.current_room.inventary.items():
-                print(f" - {item} : {description}")
+            for name, item in game.player.current_room.inventary.items():
+                print(f" - {item.name} : {item.description}")
+            for name, character in game.player.current_room.character.items():
+                print(f" - {character.name} : {character.description}")
 
     def take(game, list_of_words, number_of_parameters) :
         l = len(list_of_words)
@@ -266,3 +268,24 @@ class Actions:
 
 
         return True
+    
+    def talk(game, list_of_words, number_of_parameters):
+        l = len(list_of_words)
+        player = game.player
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG1.format(command_word=command_word))
+            return False
+        
+        # Récupérer le nom du personnage depuis les arguments
+        character_name = list_of_words[1].lower()
+
+         # Vérifier si le personnage est dans la pièce actuelle
+        if character_name not in player.current_room.character:
+             print(f"{character_name.capitalize()} n'est pas dans cette pièce.")
+             return False
+
+        # Récupérer le personnage et faire parler
+        character = player.current_room.character[character_name]
+        print(character.get_msg())  # Appelle la méthode get_msg() sur le personnage
+        return True 

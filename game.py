@@ -17,6 +17,7 @@ class Game:
         self.commands = {}
         self.player = None
         self.item={}
+        self.character={}
     
     # Setup the game
     def setup(self):
@@ -39,6 +40,8 @@ class Game:
         self.commands["take"] = take
         drop=Command('drop', "<direction> : Dépose un objet", Actions.drop,1 )
         self.commands["drop"] = drop
+        talk=Command('talk',"<description> : Parle à un personnage", Actions.talk,1)
+        self.commands["talk"] = talk
 
         # Setup rooms
 
@@ -77,7 +80,13 @@ class Game:
 
         temple.inventary={'cle':cle}
         
+        #Personnages
+        gandalf = Character("Gandalf", "un magicien blanc", temple, ["Abracadabra !"])
+        self.character['gandalf']=gandalf
 
+        #Personngaes dans les lieux
+        temple.character={'gandalf': gandalf}
+        
         # Create exits for rooms
 
         forest.exits = {"N" : cave, "E" : None, "S" : castle, "O" : village}
