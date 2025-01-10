@@ -12,8 +12,8 @@ class Character :
     
     def move(self):
         if random.choice([True,False]):
-            self.current_room.character.remove(self)
-            new_room=random.choice(list(self.current_room.exits.values()))
+            self.current_room.remove_character(self)
+            new_room=random.choice([x for x in list(self.current_room.exits.values()) if x is not None])
             print(f"{self.name} se déplace de {self.current_room.name} vers {new_room.name}")
             self.current_room=new_room
             self.current_room.add_character(self)

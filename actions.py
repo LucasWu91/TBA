@@ -76,6 +76,8 @@ class Actions:
         # Move the player in the direction specified by the parameter.
         player.move(direction)
         player.get_history()
+        for key,val in game.character.items():
+            val.move()
         return True
 
     def quit(game, list_of_words, number_of_parameters):

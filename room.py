@@ -36,3 +36,8 @@ class Room:
     def get_inventary(self):
         return self.inventary
     
+    def add_character(self,character) :
+        self.character[character.name]=character
+
+    def remove_character(self,character) :
+        del self.character[character.name]

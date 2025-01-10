@@ -81,7 +81,7 @@ class Game:
         temple.inventary={'cle':cle}
         
         #Personnages
-        gandalf = Character("Gandalf", "un magicien blanc", temple, ["Abracadabra !"])
+        gandalf = Character("gandalf", "un magicien blanc", temple, ["Abracadabra !"])
         self.character['gandalf']=gandalf
 
         #Personngaes dans les lieux
@@ -113,6 +113,7 @@ class Game:
         while not self.finished:
             # Get the command from the player and show the history after each command
             self.process_command(input("> "))
+
         return None
 
     # Process the command entered by the player
