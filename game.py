@@ -7,7 +7,7 @@ from player import Player
 from command import Command
 from actions import Actions
 from item import Item
-from Character import Character
+from character import Character
 class Game:
 
     # Constructor
@@ -83,8 +83,10 @@ class Game:
         #Personnages
         gandalf = Character("gandalf", "un magicien blanc", temple, ["Abracadabra !"])
         self.character['gandalf']=gandalf
-
+        """lucas = Character("lucas", "lucas", forest, ["lucas !"])
+        self.character['lucas']=lucas"""
         #Personngaes dans les lieux
+        """forest.character={'lucas': lucas}"""
         temple.character={'gandalf': gandalf}
         
         # Create exits for rooms

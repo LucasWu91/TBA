@@ -44,7 +44,6 @@ class Actions:
         False
 
         """
-        
         player = game.player
         l = len(list_of_words)
         # If the number of parameters is incorrect, print an error message and return False.
