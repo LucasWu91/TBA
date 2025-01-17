@@ -44,68 +44,78 @@ class Game:
         self.commands["talk"] = talk
 
         # Setup rooms
-
-        forest = Room("Forest", "dans une forêt enchantée. Vous entendez une brise légère à travers la cime des arbres.")
-        self.rooms.append(forest)
-        tower = Room("Tower", "dans une immense tour en pierre qui s'élève au dessus des nuages.")
-        self.rooms.append(tower)
-        cave = Room("Cave", "dans une grotte profonde et sombre. Des voix semblent provenir des profondeurs.")
-        self.rooms.append(cave)
-        cottage = Room("Cottage", "dans un petit chalet pittoresque avec un toit de chaume. Une épaisse fumée verte sort de la cheminée.")
-        self.rooms.append(cottage)
-        swamp = Room("Swamp", "dans un marécage sombre et ténébreux. L'eau bouillonne, les abords sont vaseux.")
-        self.rooms.append(swamp)
-        castle = Room("Castle", "dans un énorme château fort avec des douves et un pont levis. Sur les tours, des flèches en or massif.")
-        self.rooms.append(castle)
-        village = Room("Village", "dans un village de singes perchés dans les arbres, avec des ponts suspendus.")
-        self.rooms.append(village)
-        temple = Room("Temple", "dans un ancien temple mystique entouré de statues imposantes.")
-        self.rooms.append(temple)
-
-
-        # Ajout des nouvelles salles
-        temple_upper = Room("Temple Upper", "au premier étage du temple, où la lumière traverse de magnifiques vitraux.")
-        self.rooms.append(temple_upper)
-        temple_basement = Room("Temple Basement", "dans le sous-sol du temple, entouré de murs froids et humides.")
-        self.rooms.append(temple_basement)  
-
+        cellule = Room("Cellule","Une petite pièce sombre avec un lit cassé et une porte en métal.")
+        self.rooms.append(cellule)
+        couloir=Room("Couloir des Cellules","Un long passage éclairé par une lampe au mur.")
+        self.rooms.append(couloir)
+        salle_des_gardes = Room("Salle des gardes","Une pièce où les gardes prennent leurs pauses.")
+        self.rooms.append(salle_des_gardes)
+        cantine = Room("cantine", "Une simple cantine pour se restaurer.")
+        self.rooms.append(cantine)
+        salle_de_douche = Room("salle de douche", "Salle où les prisonniers se lavent.")
+        self.rooms.append(salle_de_douche)
+        cour = Room("cour", "Un grand espace libre pour se promener.")
+        self.rooms.append(cour)
+        bibliotheque=Room("bibliotheque","Une grande salle pour travailler.")
+        self.rooms.append(bibliotheque)
+        salle_musculation = Room("salle musculation", "Une grille qui mène à l'extérieur.")
+        self.rooms.append(salle_musculation)
 
         #Objets
 
-        cle=Item("cle", "une clé pour ouvrir une salle", 0.3)  
+        clou=Item("clou", "Permet d'ouvrir la porte de la cellule.",0.14)  
+        self.item['clou']=clou
+        lampe_portable = Item("lampe portable", "Éclaire les zones sombres.",0.850)
+        self.item['lampe_portable']=lampe_portable
+        cle = Item("cle", "Ouvre la Grande Porte.", 0.3)
         self.item['cle']=cle
+        couteau = Item("couteau", "Couteau avec une lame assez tranchante .",1)
+        self.item['couteau']=couteau
+        livre = Item("livre", "Permet de passer le temps.",0.5)
+        self.item['livre']=livre
+        halteres = Item("halteres", "Permet aux prisonniers de se muscler.",8)
+        self.item['halteres']=halteres
+        
 
 
         #Objets dans les lieux
 
-        temple.inventary={'cle':cle}
+        cellule.inventary={'clou':clou}
+        couloir.inventary={'lampe portable':lampe_portable}
+        salle_des_gardes.inventary={'cle':cle}
+        bibliotheque.inventary={'livre':livre}
+        cantine.inventary={'couteau':couteau}
+
         
         #Personnages
-        gandalf = Character("gandalf", "un magicien blanc", temple, ["Abracadabra !"])
-        self.character['gandalf']=gandalf
-        """lucas = Character("lucas", "lucas", forest, ["lucas !"])
-        self.character['lucas']=lucas"""
+        George = Character("George", "un garde", couloir, ["Oh retourne dans ta cellule !"])
+        self.character['George']=George
+        Sebastien = Character("Sebastien", " le prisonnier qui compte s'évader", cellule, [" J'ai quelque chose à te proposer","On peut s'évader de cette prison", "Ramène moi un couteau et la clef"])
+        self.character['Sebastien']=Sebastien
+
         #Personngaes dans les lieux
-        """forest.character={'lucas': lucas}"""
-        temple.character={'gandalf': gandalf}
+        couloir.character={'George': George}
+        cellule.character={'Sebastien': Sebastien}
+
         
         # Create exits for rooms
 
-        forest.exits = {"N" : cave, "E" : None, "S" : castle, "O" : village}
-        tower.exits = {"N" : cottage, "E" : temple, "S" : None, "O" : None}
-        cave.exits = {"N" : None, "E" : cottage, "S" : forest, "O" : None}
-        cottage.exits = {"N" : None, "E" : None, "S" : tower, "O" : cave}
-        swamp.exits = {"N" : tower, "E" : None, "S" : None, "O" : castle}
-        castle.exits = {"N" : forest, "E" : swamp, "S" : None, "O" : None}
-        village.exits = {"N" : None, "E" : None, "S" : None, "O" : forest}
-        temple.exits = {"N" : None, "E" : None, "S" : None, "O" : tower, "U": temple_upper, "D": temple_basement}
+        cellule.exits = {"N": couloir,"S": None,
+                          "O": None, "E": None}
+        couloir.exits = {"N": salle_des_gardes, "S": cellule,
+                        "E": salle_musculation, "O": salle_de_douche}
+        salle_des_gardes.exits = {"O": couloir, "S": None,
+                                  "E": None, "N": None}
+        cantine.exits = {"N": salle_musculation, "S": None, "E":None, "O": cour}
+        salle_de_douche.exits = {"N": bibliotheque, "S": None, "E":couloir, "O": None}
+        cour.exits = {"S": salle_musculation, "N": None, "O": None, "E": cantine}
+        bibliotheque.exits = {"N": None, "E": None, "O": None, "S":salle_de_douche}
+        salle_musculation.exits = {"S": cour, "N": None, "O": couloir, "E":None}
 
-        temple_upper.exits ={"N" : None, "E" : None, "S" : None, "O" : None, "U": None, "D": temple}
-        temple_basement.exits = {"N" : None, "E" : None, "S" : None, "O" : None, "U": temple, "D": None }
         # Setup player and starting room
 
         self.player = Player(input("\nEntrez votre nom: "))
-        self.player.current_room = swamp
+        self.player.current_room = cellule
 
     # Play the game
     def play(self):
