@@ -44,6 +44,7 @@ class Actions:
         False
 
         """
+        
         player = game.player
         l = len(list_of_words)
         # If the number of parameters is incorrect, print an error message and return False.
@@ -287,6 +288,12 @@ class Actions:
              return False
 
         # Récupérer le personnage et faire parler
-        character = player.current_room.character[character.name]
-        print(character.get_msg())  # Appelle la méthode get_msg() sur le personnage
-        return True 
+        else :
+            if character_name=='sebastien' and "clou" in player.inventary :
+                print ("félicitation vous êtes sorti de prison")
+                game.finished=True
+            else:
+                character = player.current_room.character[character_name]
+                print(character.get_msg())  # Appelle la méthode get_msg() sur le personnage
+            
+        return True

@@ -89,13 +89,13 @@ class Game:
         
         #Personnages
         George = Character("George", "un garde", couloir, ["Oh retourne dans ta cellule !"])
-        self.character['George']=George
-        Sebastien = Character("Sebastien", " le prisonnier qui compte s'évader", cellule, [" J'ai quelque chose à te proposer","On peut s'évader de cette prison", "Ramène moi un couteau et la clef"])
-        self.character['Sebastien']=Sebastien
+        self.character['george']=George
+        Sebastien = Character("Sebastien", " le prisonnier qui compte s'évader", cellule, [" J'ai quelque chose à te proposer"])
+        self.character['sebastien']=Sebastien
 
         #Personngaes dans les lieux
-        couloir.character={'George': George}
-        cellule.character={'Sebastien': Sebastien}
+        couloir.character={'george': George}
+        cellule.character={'sebastien': Sebastien}
 
         
         # Create exits for rooms

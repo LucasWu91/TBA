@@ -40,4 +40,4 @@ class Room:
         self.character[character.name]=character
 
     def remove_character(self,character) :
-        del self.character[character.name]
+        del self.character[character.name.lower()]
