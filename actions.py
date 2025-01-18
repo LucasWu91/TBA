@@ -287,6 +287,6 @@ class Actions:
              return False
 
         # Récupérer le personnage et faire parler
-        character = player.current_room.character[character_name]
+        character = player.current_room.character[character.name]
         print(character.get_msg())  # Appelle la méthode get_msg() sur le personnage
         return True 
