@@ -96,7 +96,8 @@ class Game:
         george = Character("george", "un garde", couloir, ["Oh retourne dans ta cellule !"])
         self.character['george'] = george
         sebastien = Character("sebastien", "le prisonnier qui compte s'évader",
-                              cellule, [" J'ai quelque chose à te proposer"])
+                              cellule, [" J'ai quelque chose à te proposer",
+                                        "Mais pour cela il va falloir que tu me ramènes un couteau et la cle de la cellule des gardes"])
         self.character['sebastien'] = sebastien
 
         # Personnages dans les lieux
@@ -105,14 +106,14 @@ class Game:
 
         # Exits des pièces
         cellule.exits = {"N": couloir, "S": None, "O": None, "E": None}
-        couloir.exits = {"N": salle_des_gardes, "S": cellule, "E": salle_musculation,
+        couloir.exits = {"N": salle_des_gardes, "S": cellule, "E": cour,
                         "O": salle_de_douche}
-        salle_des_gardes.exits = {"O": couloir, "S": None, "E": None, "N": None}
-        cantine.exits = {"N": salle_musculation, "S": None, "E": None, "O": cour}
-        salle_de_douche.exits = {"N": bibliotheque, "S": None, "E": couloir, "O": None}
-        cour.exits = {"S": salle_musculation, "N": None, "O": None, "E": cantine}
-        bibliotheque.exits = {"N": None, "E": None, "O": None, "S": salle_de_douche}
-        salle_musculation.exits = {"S": cour, "N": None, "O": couloir, "E": None}
+        salle_des_gardes.exits = {"O": None, "S": couloir, "E": None, "N": None}
+        cantine.exits = {"N": cour, "S": None, "E": None, "O": None}
+        salle_de_douche.exits = {"N": None, "S": None, "E":couloir, "O": None}
+        cour.exits = {"S": cantine, "N": salle_musculation, "O": couloir, "E": bibliotheque}
+        bibliotheque.exits = {"N": None, "S": None, "E": None, "O": cour}
+        salle_musculation.exits = {"S": cour, "N": None, "O": None, "E": None}
 
         # Joueur et position de départ
         self.player = Player(input("\nEntrez votre nom: "))
@@ -146,7 +147,11 @@ class Game:
         """
         Affiche le message de bienvenue au joueur.
         """
-        print(f"\nBienvenue {self.player.name} dans ce jeu d'aventure !")
+        print(f"\nBienvenue {self.player.name} dans ce jeu d'aventure !\n")
+        print("Vous ouvrez les yeux lentement... Les murs froids de la cellule vous entourent.")
+        print("Une lumière traverse les barreaux de la petite fenêtre au-dessus de vous.")
+        print("Votre mission : trouver un moyen de sortir de cette prison.")
+        print("Faites les bons choix, et peut-être obtiendrez-vous la liberté.\n")
         print("Entrez 'help' si vous avez besoin d'aide.")
         print(self.player.current_room.get_long_description())
 
